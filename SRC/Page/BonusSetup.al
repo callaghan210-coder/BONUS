@@ -14,7 +14,7 @@ page 60000 "MNB Bonus Setup"
             group(Numbering)
             {
                 Caption = 'Numbering';
-                field("Bonus Nos."; "Bonus Nos.")
+                field("Bonus Nos."; Rec."Bonus Nos.")
                 {
                     ApplicationArea = All;
                     Tooltip = 'Specifies number series what will be used for bonus numbers.';
@@ -22,4 +22,14 @@ page 60000 "MNB Bonus Setup"
             }
         }
     }
+    trigger OnOpenPage()
+    var
+        BonusSetupRec: Record "MNB Bonus Setup";
+    begin
+        BonusSetupRec.Reset();
+        if not BonusSetupRec.Get() then begin
+            BonusSetupRec.Init();
+            BonusSetupRec.Insert();
+        end;
+    end;
 }
