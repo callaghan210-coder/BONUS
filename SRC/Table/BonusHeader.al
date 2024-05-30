@@ -2,8 +2,8 @@ table 60001 "MNB Bonus Header"
 {
     Caption = 'Bonus';
     DataClassification = CustomerContent;
-    DrillDownPageId = "MNB Bonus List";
-    LookupPageId = "MNB Bonus List";
+    DrillDownPageId = "MNB Bonus List""";
+    LookupPageId = "MNB Bonus List""";
     fields
     {
         field(1; "No."; Code[20])

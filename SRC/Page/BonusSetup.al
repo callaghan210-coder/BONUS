@@ -6,7 +6,7 @@ page 60000 "MNB Bonus Setup"
     SourceTable = "MNB Bonus Setup";
     Caption = 'Bonus Setup';
     DeleteAllowed = false;
-    InsertAllowed = false;
+    InsertAllowed = true;
     layout
     {
         area(Content)
