@@ -1,11 +1,12 @@
-page 60001 "MNB Bonus List"""
+page 60001 "MNB Bonus List"
 {
     ApplicationArea = All;
     Caption = 'Bonuses';
     PageType = List;
     SourceTable = "MNB Bonus Header";
     UsageCategory = Lists;
-    Editable = false;
+    CardPageId = "MNB Bonus Card";
+    // Editable = false;
 
     layout
     {

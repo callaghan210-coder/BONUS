@@ -21,7 +21,7 @@ pageextension 60006 "MNB Customer List" extends "Customer List"
                 Caption = 'Bonuses';
                 ApplicationArea = All;
                 Image = Discount;
-                RunObject = page "MNB Bonus List""";
+                RunObject = page "MNB Bonus List";
                 RunPageLink = "Customer No." = field("No.");
             }
         }

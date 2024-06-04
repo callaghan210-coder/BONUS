@@ -2,14 +2,15 @@ table 60001 "MNB Bonus Header"
 {
     Caption = 'Bonus';
     DataClassification = CustomerContent;
-    DrillDownPageId = "MNB Bonus List""";
-    LookupPageId = "MNB Bonus List""";
+    DrillDownPageId = "MNB Bonus List";
+    LookupPageId = "MNB Bonus List";
     fields
     {
         field(1; "No."; Code[20])
         {
             DataClassification = CustomerContent;
             Caption = 'No.';
+            Editable = false;
         }
         field(2; "Customer No."; Code[20])
         {
@@ -32,6 +33,11 @@ table 60001 "MNB Bonus Header"
             DataClassification = CustomerContent;
             Caption = 'Status';
         }
+        field(6; "No. Series"; Code[20])
+        {
+            DataClassification = ToBeClassified;
+            TableRelation = "No. Series";
+        }
     }
     keys
     {
@@ -40,5 +46,17 @@ table 60001 "MNB Bonus Header"
             Clustered = true;
         }
     }
+    var
+        BonuseSetup: Record "MNB Bonus Setup";
+        NoseriesMgt: Codeunit NoSeriesManagement;
+
+    trigger OnInsert()
+    begin
+        if Rec."No." = '' then begin
+            BonuseSetup.Get();
+            BonuseSetup.TestField("Bonus Nos.");
+            NoseriesMgt.InitSeries(BonuseSetup."Bonus Nos.", XRec."No. Series", 0D, Rec."No.", Rec."No. Series");
+        end;
+    end;
 }
 
